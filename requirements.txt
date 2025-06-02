@@ -1,7 +1,5 @@
 huggingface-hub[cli]
-torch 
-torchvision 
-torchaudio
+torch==3.7.0
 transformers==4.50.3
 timm==1.0.15
 datasets==3.5.0
