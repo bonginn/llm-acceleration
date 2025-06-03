@@ -38,3 +38,16 @@ After installing all dependencies, make sure you are logged in to Hugging Face t
 huggingface-cli login
 ```
 > You can generate one at [Hugging Face](https://huggingface.co/settings/tokens).
+
+Running inference to reproduce the results:
+```bash
+python3 inference.py
+```
+
+If you want to run distillation and/or LoRA fine-tuning, you can use the following commands:
+
+```bash
+python3 distillation.py
+python3 lora.py
+```
+> It may take ~10 hours to run distillation and ~1.5 hours to run LoRA fine-tuning on a single A100 40GB.
