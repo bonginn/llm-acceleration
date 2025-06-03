@@ -5,7 +5,8 @@ from tqdm.auto import tqdm
 from datasets import load_dataset
 import random
 import numpy as np
-from hqq_utils import AutoHQQHFModel, get_size_of_model
+from utils.hqq_utils import AutoHQQHFModel, get_size_of_model
+from utils.get_quant_config import getQuantConfig
 from hqq.utils.patching import recommended_inductor_config_setter
 from hqq.core.quantize import BaseQuantizeConfig, HQQBackend, HQQLinear
 
@@ -127,8 +128,7 @@ def main():
     torch.cuda.empty_cache()
 
     # Step 4: Quantize the model using HQQ
-    from get_quant_config import get_quant_config
-    quant_config = get_quant_config(model_merge)
+    quant_config = getQuantConfig(model_merge)
     AutoHQQHFModel.quantize_model(model_merge, quant_config=quant_config, compute_dtype=torch.float16, device=device)
 
     # Step 5: torch.compile and set HQQ backend
@@ -149,6 +149,7 @@ def main():
     
     # === (Optional) Uncomment the following lines if using the custom generate() function. ===
     # model.prefill_forward = model.forward
+    # print(f'ppl: {evaluate_ppl(model_merge, tokenizer, device)}')
 
 
     warmup_prompt = "Explain what AI is."
