@@ -1,6 +1,6 @@
 from hqq.core.quantize import BaseQuantizeConfig
 
-def get_quant_config(model):
+def getQuantConfig(model):
     """
     param:
         model: the model to be quantized
