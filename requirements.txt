@@ -8,3 +8,4 @@ gemlite==0.4.4
 hqq==0.2.5
 triton==3.3.0
 peft==0.15.2
+bitsandbytes
