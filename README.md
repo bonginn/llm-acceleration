@@ -1,5 +1,6 @@
 # LLM Acceleration
 
+## Overview
 This project explores how to accelerate **LLaMA-3.2-3B-Instruct** inference on a single **NVIDIA T4 GPU**, while keeping **perplexity under or equal to 11.5**.
 
 The optimization pipeline includes:
@@ -10,9 +11,7 @@ The optimization pipeline includes:
 4. Quantization using [HQQ](https://github.com/mobiusml/hqq) with hybrid 4/8-bit precision  
 5. Inference backend optimization with `torch.compile` and `gemlite`
 
----
-
-## Usage
+## Setup and Reproduce
 First, clone the repository:
 
 ```bash
@@ -33,3 +32,9 @@ pip install -r requirements.txt
 ```
 > ⚠️ **Note:** `torch` must be installed **before** `gemlite` since `gemlite` imports `torch` during installation.
 
+After installing all dependencies, make sure you are logged in to Hugging Face to access the LLaMA models:
+
+```bash
+huggingface-cli login
+```
+> You can generate one at [Hugging Face](https://huggingface.co/settings/tokens).
