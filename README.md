@@ -51,3 +51,17 @@ python3 distillation.py
 python3 lora.py
 ```
 > It may take ~10 hours to run distillation and ~1.5 hours to run LoRA fine-tuning on a single A100 40GB.
+
+## Results
+
+| Model Configuration | Perplexity | Throughput (tokens/s) |
+|-------------------|------------|-----------------|
+| 3B Base | 11.05 | 26.2 |
+| 3B + LoRA | 9.67 | 26.2 |
+| Distilled 1B | 11.76 | 67.5 |
+| Distilled 1B + LoRA | 11.42 | 67.5 |
+| Distilled 1B + LoRA + HQQ | 11.49 | 125.0 |
+
+> Note: All experiments were conducted on a single NVIDIA T4 GPU.
+> The throughput measurements are end-to-end (e2e), including both prefill and decoding phases.
+    
